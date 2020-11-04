@@ -32,7 +32,8 @@ public class DataContainer {
     public List<Message> getMessageData(int count){
         ArrayList data = new ArrayList();
         for(int i=0; i<count; i++){
-            data.add(new Message(i, getTitle(), getSubTitle()));
+//            data.add(new Message(i, getTitle(), getSubTitle()));
+            data.add(new Message(i, ""+i, ""+i));
         }
         return data;
     }

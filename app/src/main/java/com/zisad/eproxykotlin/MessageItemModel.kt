@@ -15,11 +15,17 @@ abstract class MessageItemModel : EpoxyModelWithHolder<MessageItemModel.Holder>(
     @EpoxyAttribute
     lateinit var message: Message
 
+    var isLast: Boolean = false
+
     override fun bind(holder: Holder) {
         super.bind(holder)
         with(message) {
             holder.title.text = username
             holder.content.text = content
+
+            if(isLast){
+                holder.title.text = "This is last item"
+            }
         }
     }
 

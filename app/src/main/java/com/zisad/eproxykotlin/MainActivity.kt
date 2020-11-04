@@ -1,6 +1,7 @@
 package com.zisad.eproxykotlin
 
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
@@ -24,9 +25,12 @@ class MainActivity : AppCompatActivity() {
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
             messagesView.setOnScrollChangeListener { view, i, i2, i3, i4 ->
                 if(!messagesView.canScrollVertically(1)){
-                    Toast.makeText(this@MainActivity, "Loading", Toast.LENGTH_SHORT).show()
                     val data: ArrayList<Message> = controller.allMessages as ArrayList<Message>
-                    data.addAll(DataContainer().getMessageData(50))
+                    val message = data.get(data.size-1) as Message
+                    val test = message.username+" - "+message.content
+                    Log.e("Scrol", test)
+                    Toast.makeText(this@MainActivity, test, Toast.LENGTH_SHORT).show()
+                    data.addAll(DataContainer().getMessageData(20))
                     controller.allMessages = data
                 }
             }
